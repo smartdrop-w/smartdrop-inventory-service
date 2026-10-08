@@ -1,25 +1,39 @@
 ﻿# smartdrop-inventory-service
 
-> **SmartDrop â€” IoT Liquid Monitoring & Quality Management**  
-> UPC â€” Fundamentos de Arquitectura de Software (2026-20)  
-> Autor: **Angel Jose Pariona Chacca**
+> **SmartDrop - IoT Liquid Monitoring & Quality Management**  
+> *UPC - Fundamentos de Arquitectura de Software (2026-20)*  
+> *Autor Responsable:* **Angel Jose Pariona Chacca**
 
-## ðŸ“‹ Descripcion
-SmartDrop Inventory Microservice: Tanques, Dispositivos IoT, Consumo, Proxy Cache-Aside y Factory Method
+---
 
-## ðŸš€ Ejecucion Rapida (Zero Friction)
-Para iniciar el servicio localmente:
-``bash
-# En Windows PowerShell
+## Descripcion General
+
+Microservicio encargado del inventario de tanques, telemetria de dispositivos sensores IoT, registro historico de consumo, implementacion del patron Proxy Cache-Aside y Factory Method para normalizacion de sensores.
+
+---
+
+## Ejecucion en Entorno Local
+
+Para compilar y ejecutar el proyecto localmente sin preconfiguraciones externas:
+
+``powershell
+# Compilacion y arranque con Maven Wrapper
 ./mvnw spring-boot:run
 ``
 
-* **Puerto Local:** $(System.Collections.Hashtable.Port)
-* **Swagger UI:** [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html)
-* **OpenAPI Docs:** [http://localhost:8082/v3/api-docs](http://localhost:8082/v3/api-docs)
-* **Health Check Probe:** [http://localhost:8082/api/v1/health](http://localhost:8082/api/v1/health)
+## Configuracion de Puertos y Endpoints
 
-## ðŸ§ª Pruebas Automatizadas
-``bash
+* **Puerto Local:** 8082
+* **Swagger UI:** [http://localhost:8082/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html)
+* **OpenAPI Especificacion JSON:** [http://localhost:8082/v3/api-docs](http://localhost:8082/v3/api-docs)
+* **Health Check Liveness Probe:** [http://localhost:8082/api/v1/health](http://localhost:8082/api/v1/health)
+
+---
+
+## Pruebas Automatizadas
+
+Para validar la suite de pruebas unitarias y de integracion:
+
+``powershell
 ./mvnw test
 ``
