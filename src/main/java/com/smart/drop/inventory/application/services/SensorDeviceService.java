@@ -1,0 +1,61 @@
+package com.smart.drop.inventory.application.services;
+
+import com.smart.drop.inventory.domain.model.entities.SensorDevice;
+import com.smart.drop.inventory.domain.model.repositories.SensorDeviceRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional
+public class SensorDeviceService {
+
+    private final SensorDeviceRepository sensorDeviceRepository;
+
+    public SensorDeviceService(SensorDeviceRepository sensorDeviceRepository) {
+        this.sensorDeviceRepository = sensorDeviceRepository;
+    }
+
+    public SensorDevice createDevice(Integer userId, String name, String location, String flow, String daily, Integer battery, String status) {
+        SensorDevice device = SensorDevice.create(userId, name, location, flow, daily, battery, status);
+        return sensorDeviceRepository.save(device);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<SensorDevice> getById(Integer deviceId) {
+        return sensorDeviceRepository.findById(deviceId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<SensorDevice> getByUserId(Integer userId) {
+        return sensorDeviceRepository.findByUserId(userId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<SensorDevice> getAll() {
+        return sensorDeviceRepository.findAll();
+    }
+
+    public SensorDevice updateDevice(Integer deviceId, String name, String location, String flow, String daily, Integer battery, String status) {
+        SensorDevice current = sensorDeviceRepository.findById(deviceId)
+                .orElseThrow(() -> new IllegalArgumentException("SensorDevice not found: " + deviceId));
+
+        SensorDevice updated = new SensorDevice(
+                current.deviceId(),
+                current.userId(),
+                name,
+                location,
+                flow,
+                daily,
+                battery,
+                status
+        );
+        return sensorDeviceRepository.save(updated);
+    }
+
+    public void deleteById(Integer deviceId) {
+        sensorDeviceRepository.deleteById(deviceId);
+    }
+}
