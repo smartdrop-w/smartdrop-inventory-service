@@ -16,10 +16,10 @@ Microservicio encargado del inventario de tanques, telemetria de dispositivos se
 
 Para compilar y ejecutar el proyecto localmente sin preconfiguraciones externas:
 
-``powershell
+```powershell
 # Compilacion y arranque con Maven Wrapper
 ./mvnw spring-boot:run
-``
+```
 
 ## Configuracion de Puertos y Endpoints
 
@@ -34,6 +34,6 @@ Para compilar y ejecutar el proyecto localmente sin preconfiguraciones externas:
 
 Para validar la suite de pruebas unitarias y de integracion:
 
-``powershell
+```powershell
 ./mvnw test
 ```
