@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -30,6 +31,10 @@ public class InventoryEntity {
 
     @Column(name = "NextRefillPrediction")
     private LocalDate nextRefillPrediction;
+
+    @Version
+    @Column(name = "Version")
+    private Long version;
 
     public Integer getInventoryId() {
         return inventoryId;
@@ -70,5 +75,12 @@ public class InventoryEntity {
     public void setNextRefillPrediction(LocalDate nextRefillPrediction) {
         this.nextRefillPrediction = nextRefillPrediction;
     }
-}
 
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+}
