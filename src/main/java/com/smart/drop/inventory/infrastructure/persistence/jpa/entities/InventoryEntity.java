@@ -1,5 +1,6 @@
 package com.smart.drop.inventory.infrastructure.persistence.jpa.entities;
 
+import com.smart.drop.shared.domain.model.entities.AuditableModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "Inventory")
-public class InventoryEntity {
+public class InventoryEntity extends AuditableModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
